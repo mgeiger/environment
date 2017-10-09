@@ -1,7 +1,7 @@
 #!/bin/bash
 # Setup some common tools that I use
 sudo apt-get update
-sudo apt-get install --assume-yes vim git python-setuptools python-pip
+sudo apt-get install --assume-yes vim git python-setuptools python-pip curl
 
 # Setup the ~/.vimrc file
 echo "Copying ~/.vimrc"
