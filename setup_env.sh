@@ -1,4 +1,7 @@
 #!/bin/bash
+# Setup some common tools that I use
+sudo apt-get update
+sudo apt-get install --assume-yes vim git python-setuptools python-pip
 
 # Setup the ~/.vimrc file
 echo "Copying ~/.vimrc"
@@ -28,6 +31,11 @@ else
 	echo " - git is not installed. Installing now."
 	sudo apt-get update && sudo apt-get --assume-yes install git
 fi
+
+# Install Vim Plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 
 # Install the Vundle vim plugin
 echo "Getting Vundle"
