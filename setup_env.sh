@@ -1,7 +1,18 @@
 #!/bin/bash
+
 # Setup some common tools that I use
-sudo apt-get update
-sudo apt-get install --assume-yes vim git python-setuptools python-pip curl
+echo "Updating Ubuntu and putting some tools on here."
+sudo apt update
+sudo apt install --assume-yes \
+	curl \
+	git \
+	python-pip \
+	python-setuptools \
+	python3-pip \
+	python3-tk \
+	tree \
+	vim \
+	virtualenv
 
 # Setup the ~/.vimrc file
 echo "Copying ~/.vimrc"
@@ -34,7 +45,7 @@ fi
 
 # Install Vim Plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
 # Install the Vundle vim plugin
