@@ -6,10 +6,12 @@ sudo apt update
 sudo apt install --assume-yes \
 	curl \
 	git \
+	lm-sensors \
 	python-pip \
 	python-setuptools \
 	python3-pip \
 	python3-tk \
+	tmux \
 	tree \
 	vim \
 	virtualenv
