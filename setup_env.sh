@@ -24,6 +24,13 @@ if [ -a ~/.vimrc ]; then
 fi
 cp ./vimrc ~/.vimrc
 
+# Setup the ~/.tmux.conf file
+if [ -a ~/.tmux.conf ]; then
+	echo " -Backing up ~/.tmux.conf"
+	cp ~/.tmux.conf{,.bak."$(date +%Y%m%d%H%M%S)"}
+fi
+cp ./tmux.conf ~/.tmux.conf
+
 # Setup the python.vim file and directory
 echo "Copying python.vim"
 if [ ! -d ~/.vim/ftplugin ]; then 
@@ -44,6 +51,12 @@ else
 	echo " - git is not installed. Installing now."
 	sudo apt-get update && sudo apt-get --assume-yes install git
 fi
+
+# Configuring Git
+/usr/bin/git config --global user.name "Matthew J. Geiger"
+/usr/bin/git config --global user.email "matthew.j.geiger@gmail.com"
+/usr/bin/git config --global color.ui true
+/usr/bin/git config --global merge.ff false
 
 # Install Vim Plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
