@@ -2,7 +2,7 @@
 
 # Setup some common tools that I use
 echo "Updating Ubuntu and putting some tools on here."
-sudo apt update
+sudo apt -q update
 sudo apt install --assume-yes \
 	curl \
 	git \
@@ -49,14 +49,19 @@ if [ -x /usr/bin/git ]; then
 	echo " - git is installed"
 else
 	echo " - git is not installed. Installing now."
-	sudo apt-get update && sudo apt-get --assume-yes install git
+	sudo apt -q update && sudo apt --assume-yes install git
 fi
 
 # Configuring Git
-/usr/bin/git config --global user.name "Matthew J. Geiger"
-/usr/bin/git config --global user.email "matthew.j.geiger@gmail.com"
-/usr/bin/git config --global color.ui true
-/usr/bin/git config --global merge.ff false
+if [ -x "$(command -v git)" ]; then
+	git config --global user.name "Matthew J. Geiger"
+	git config --global user.email "matthew.j.geiger@gmail.com"
+	git config --global color.ui true
+	git config --global merge.ff false
+	git config --global core.editor "vim"
+else
+	echo " - Difficulty trying to find git. Could not configure."
+fi
 
 # Install Vim Plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
